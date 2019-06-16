@@ -1,0 +1,18 @@
+<h1>Student Search</h1>
+{{studentsSearchController.students | json}}
+<table border="1" style="border-collapse: collapse;">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Lastname</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="student in studentsSearchCtrl.students">
+			<td>{{student.id}}</td>
+			<td>{{student.firstname}}</td>
+			<td>{{student.lastname}}</td>
+		</tr>
+	</tbody>
+</table>

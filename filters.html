@@ -1,0 +1,72 @@
+<html ng-app="myModule">
+
+<head>
+    <title></title>
+    <script src="./angular-1.7.8//angular.js"></script>
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <table border="1">
+            Rows to display <input type="number" step="1" min="0" max="5" ng-model="rowLimit"/>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary (number)</th>
+                    <th>Salary (currency)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | limitTo:rowLimit">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                    <td>{{employee.gender | lowercase}}</td>
+                    <td>{{employee.salary | number:2 }}</td>
+                    <td>{{employee.salary | currency: "Php" : 1}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+<script>
+
+    var myApp = angular.module("myModule", [])
+        .controller("myController", function ($scope) {
+            let employees = [
+                {
+                    name: "Ben",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 5500.34,
+                },
+                {
+                    name: "Sarah",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 32.34,
+                },
+                {
+                    name: "Jason",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 34423.34,
+                },
+                {
+                    name: "Noel",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 21211.34,
+                }
+            ];
+
+            $scope.employees = employees;
+            $scope.rowLimit = 3;
+
+        });
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<html ng-app="myModule">
+
+<head>
+    <title></title>
+    <script src="./angular-1.7.8//angular.js"></script>
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Technology</td>
+                    <td>Likes</td>
+                    <td>Dislikes</td>
+                    <td>Likes/Dislikes</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tech in technologies">
+                    <td>{{tech.name}}</td>
+                    <td>{{tech.likes}}</td>
+                    <td>{{tech.dislikes}}</td>
+                    <td>
+                        <button type="button" ng-click="incrementLIkes(tech)">Likes</button>
+                        <button type="button" ng-click="incrementDislikes(tech)">Dislikes</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</body>
+
+<script>
+
+var myApp = angular.module("myModule", [])
+    .controller("myController", function ($scope) {
+        let technologies = [
+            {name: "C#", likes: 0, dislikes: 0},
+            {name: "PHP", likes: 0, dislikes: 0},
+            {name: "HTML", likes: 0, dislikes: 0},
+            {name: "CSS", likes: 0, dislikes: 0},
+        ];
+
+        $scope.technologies = technologies;
+
+        $scope.incrementLIkes = function(technology) {
+            technology.likes++;
+        }
+
+        $scope.incrementDislikes = function(technology) {
+            technology.dislikes++;
+        }
+    });
+</script>
+
+</html>

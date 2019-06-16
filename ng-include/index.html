@@ -1,0 +1,21 @@
+<html>
+
+<head>
+    <title></title>
+    <script src="../angular-1.7.8/angular.js"></script>
+</head>
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        Select View: 
+        <select ng-model="employeeView">
+            <option value="employeeTable.html">Table</option>
+            <option value="employeeList.html">List</option>
+        </select>
+    <div ng-include="employeeView"></div>
+    </div>
+</body>
+<script src='./script.js'></script>
+
+
+</html>

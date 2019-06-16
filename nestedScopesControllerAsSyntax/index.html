@@ -1,0 +1,21 @@
+<html ng-app="Demo">
+<head>
+  <title></title>
+  <script src="../angular-1.7.8/angular.js"></script>
+  <script src="./script.js"></script>
+ </head>
+<body>
+	<div ng-controller="countryController as ctrlCountry">
+		{{ctrlCountry.name}}
+		<div ng-controller="stateController as ctrlState">
+			{{ctrlCountry.name}} - {{ctrlState.name}}
+			<div ng-controller="cityController as ctrlCity">
+				{{ctrlCountry.name}} - {{ctrlState.name}} - {{ctrlCity.name}}
+			</div>
+		</div>
+	</div>
+</body>
+
+
+
+</html>

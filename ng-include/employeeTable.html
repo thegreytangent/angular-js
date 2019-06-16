@@ -1,0 +1,16 @@
+<table border="1" style="padding:10px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>City</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees">
+                <td>{{employee.name | uppercase}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.city}}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,32 @@
+<html ng-app="Demo">
+
+<head>
+    <title></title>
+    <script src="../angular-1.7.8/angular.js"></script>
+</head>
+
+<body>
+  <div ng-controller="redColorController">
+      Root scope colour : {{rootScopeColor}}<br/>
+      Red color controller: {{redColor}}<br/>
+      Green color controller: {{greenColor}}<br/>
+      <span style="color:green" ng-show="greenColor == undefined">
+        Green color is undefined
+      </span><br/><br/>
+
+  </div>
+  <div ng-controller="greenColorController">
+      Root scope colour : {{rootScopeColor}}<br/>
+      Green color controller: {{greenColor}}<br/>
+      Red color controller: {{redColor}}<br/>
+      <span style="color:red" ng-show="redColor == undefined">
+        Red color is undefined
+      </span>
+      <br/><br/>
+
+  </div>
+</body>
+<script src='./script.js'></script>
+
+
+</html>

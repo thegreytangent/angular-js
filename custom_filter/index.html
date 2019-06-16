@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title></title>
+    <script src="../angular-1.7.8/angular.js"></script>
+</head>
+
+<body ng-app="myModule">
+    <div ng-controller="myController">
+        <table border="1" style="padding:10px">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Salary (Number)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | filter:search">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.gender | gender}}</td>
+                    <td>{{employee.salary}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script src="./script.js"></script>
+<script src="./filter.js"></script>
+
+</html>

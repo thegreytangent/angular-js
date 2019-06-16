@@ -1,0 +1,111 @@
+<html ng-app="myModule">
+
+<head>
+    <title></title>
+    <style>
+           .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid transparent;
+            display: inline-block;
+        }
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid transparent;
+            display: inline-block;
+        }
+    </style>
+    <script src="./angular-1.7.8//angular.js"></script>
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <!-- <input type="text" placeholder="Search name" ng-model="searchText.name">
+        <input type="text" placeholder="Search city" ng-model="searchText.city"> 
+        <input type="checkbox" ng-model="exactMatch"> Exact Match -->
+        <input type="text" placeholder="Search name and city" ng-model="searchText">
+        <br><br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Salary (Number)</th>
+                    <th>Salary (Currency)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | filter:search">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                    <td>{{employee.gender | lowercase}}</td>
+                    <td>{{employee.salary | number:2 }}</td>
+                    <td>{{employee.city | uppercase}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+<script>
+
+    var myApp = angular.module("myModule", [])
+        .controller("myController", function ($scope) {
+            let employees = [
+                {
+                    name: "Ben",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    city: 'Silay',
+                    salary: 2342
+                },
+                {
+                    name: "Sarah",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    city: 'Talisay',
+                    salary: 2343.843
+                },
+                {
+                    name: "Jason",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    city: 'Bago',
+                    salary: 234.211
+                },
+                {
+                    name: "Noel",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    city: 'Bacolod',
+                    salary: 4422.3
+                }
+            ];
+
+            $scope.employees = employees;
+
+            $scope.search = function(item) {
+                if ($scope.searchText === undefined) {
+                    return true;
+                } else {
+                    if ( 
+                        item.name.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 || 
+                        item.city.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1
+                    ) {
+                        return true;
+                    }
+                }
+                return false;
+            }   
+           
+        });
+</script>
+
+</html>

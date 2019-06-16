@@ -1,0 +1,112 @@
+<html ng-app="myModule">
+
+<head>
+    <title></title>
+    <style>
+           .arrow-up {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid transparent;
+            display: inline-block;
+        }
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid transparent;
+            display: inline-block;
+        }
+    </style>
+    <script src="./angular-1.7.8//angular.js"></script>
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <table border="1">
+           <!-- Order by: 
+           <select ng-model="sortColumn">
+               <option value="name">Name ASC</option>
+               <option value="gender">Gender ASC</option>
+               <option value="date">Date ASC</option>
+               <option value="-salary">Salary DESC</option>
+           </select> -->
+            <thead>
+                <tr>
+                    <th ng-click="sortData('name')">Name 
+                        <div class=".arrow-up"></div></th>
+                    <th ng-click="sortData('dateOfBirth')">Date of Birth <div ng-class="getSortClass('dateOfBirth')"></div></th>
+                    <th ng-click="sortData('gender')">Gender <div ng-class="getSortClass('gender')"></div></th>
+                    <th ng-click="sortData('salary')">Salary (number) <div ng-class="getSortClass('salary')"></div></th>
+                    <th ng-click="sortData('salary')">Salary (currency) <div ng-class="getSortClass('salary')"></div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="employee in employees | orderBy:sortColumn:reverseSort ">
+                    <td>{{employee.name | uppercase}}</td>
+                    <td>{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+                    <td>{{employee.gender | lowercase}}</td>
+                    <td>{{employee.salary | number:2 }}</td>
+                    <td>{{employee.salary | currency: "Php" : 1}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+<script>
+
+    var myApp = angular.module("myModule", [])
+        .controller("myController", function ($scope) {
+            let employees = [
+                {
+                    name: "Ben",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 5500.34,
+                },
+                {
+                    name: "Sarah",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 32.34,
+                },
+                {
+                    name: "Jason",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 34423.34,
+                },
+                {
+                    name: "Noel",
+                    dateOfBirth: new Date("November 23, 2017"),
+                    gender: "Male",
+                    salary: 21211.34,
+                }
+            ];
+
+            $scope.employees = employees;
+            $scope.sortColumn = "name";
+            $scope.reverseSort = false;
+
+            $scope.sortData = function(column) {
+                $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
+                console.log($scope.reverseSort);
+                $scope.sortColumn = column;
+            }
+
+            $scope.getSortClass = function (column) {
+                if ($scope.sortColumn == column) {
+                    return $scope.reverseSort ? '.arrow-down' : '.arrow-up';
+                   
+                }
+                return '.arrow-down';
+            }
+
+        });
+</script>
+
+</html>

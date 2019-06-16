@@ -1,0 +1,38 @@
+<meta charset="utf-8"/>
+<html ng-app="Demo">
+<head>
+  <title></title>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="../angular-1.7.8/angular.min.js"></script>
+  <script src="../angular-1.7.8/angular-ui-router.js"></script>
+   <script src="./script.js"></script>
+  <base href="http://localhost/AngularJS/layoutTemplates/" />
+</head>
+<body>
+  <table style="font-family: Arial">
+    <tr>
+      <td colspan="2" class="header">
+        <h1>Website Header</h1>
+      </td>
+    </tr>
+    <tr>
+      <td class="leftMenu">
+        <a ui-sref="home" ui-sref-active="activeState">Home</a>
+        <a ui-sref="courses" ui-sref-active="activeState">Courses</a>
+        <!-- <a ui-sref="students" ui-sref-active="activeState">Students</a> -->
+        <a ui-sref="studentParent.students" ui-sref-active="activeState">Students</a>
+      </td>
+      <td class="mainContent">
+        <!-- <ng-view></ng-view> -->
+        <ui-view></ui-view>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="footer">
+        <b>Website Fotter</b>
+      </td>
+    </tr>  
+  </table>
+</body>
+</html>

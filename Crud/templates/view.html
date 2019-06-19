@@ -1,0 +1,15 @@
+<div class="row">
+        <div class="col-md-2">
+          <div class="list-group">
+            <a href="#!/" class="list-group-item list-group-item-action">Home</a>
+            <a href="#!/create" class="list-group-item list-group-item-action">Add Post</a>
+          </div>
+        </div>
+        <div class="col-md-10" ng-controller="viewCtrl">
+            <h2>View Post</h2>
+            <h3>Title: {{result.info.title}}</h3>
+             <p>Published on: {{result.info.published_on}}</p>
+             <b>Description: {{result.info.description}}</b>
+            </div>
+      </div>
+      

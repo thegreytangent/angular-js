@@ -1,1 +1,32 @@
-<h1>Create post</h1>
+<div class="row">
+    <div class="col-md-2">
+      <div class="list-group">
+        <a href="#!/" class="list-group-item list-group-item-action">Home</a>
+        <a href="#!/create" class="list-group-item list-group-item-action">Add Post</a>
+      </div>
+    </div>
+    <div class="col-md-10" ng-controller="createCtrl">
+        {{info}}
+        <form id="myform" ng-submit="submitForm()">
+            <fieldset>
+              <legend>Legend</legend>
+             
+              <div class="form-group">
+                <label for="exampleInputEmail1">Title:</label>
+                <input name="title" id="title" type="text" ng-model="content.title" class="form-control" id="title" placeholder="Title">
+             
+              <div class="form-group">
+                <label for="exampleTextarea">Description:</label>
+                <textarea name="description" id="description" ng-model="content.description" class="form-control" id="exampleTextarea" rows="3"></textarea>
+              </div>
+              <p id="msg"></p>
+              <button type="button" class="btn btn-primary">Cancel</button>
+              <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+          </form>
+          {{content | json }}
+    </div>
+  </div>
+
+  
+  

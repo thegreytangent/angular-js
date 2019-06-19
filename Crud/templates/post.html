@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-2">
     <div class="list-group">
-      <a href="" class="list-group-item list-group-item-action">Home</a>
+      <a href="#!/" class="list-group-item list-group-item-action">Home</a>
       <a href="#!/create" class="list-group-item list-group-item-action">Add Post</a>
     </div>
   </div>
@@ -17,12 +17,12 @@
       </thead>
       <tbody>
         <tr ng-repeat="post in posts.info">
-          <th>{{post.id}}</th>
+          <th>{{post.title}}</th>
           <td>{{post.description}}</td>
           <td>{{post.published_on}}</td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm">View</button>
-            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+            <a  href="#!/view/{{post.id}}" class="btn btn-primary btn-sm">View</a>
+            <a  href="#!/delete/{{post.id}}" class="btn btn-danger btn-sm">Delete</a>
           </td>
         </tr>
       </tbody>
